@@ -25,7 +25,7 @@ class JournalPost(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     slug = models.SlugField(unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notes")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="journalposts")
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)

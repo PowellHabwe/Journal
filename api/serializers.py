@@ -26,3 +26,4 @@ class JournalPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalPost
         fields = ['id','author', 'title', 'content', 'category', 'date', 'slug']
+        extra_kwargs = {"author": {"read_only": True}}
