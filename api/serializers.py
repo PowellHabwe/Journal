@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-# from .models import Note
+from .models import JournalPost, Category
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -15,3 +15,14 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name', 'slug']
+
+class JournalPostSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+
+    class Meta:
+        model = JournalPost
+        fields = ['id','author', 'title', 'content', 'category', 'date', 'slug']
