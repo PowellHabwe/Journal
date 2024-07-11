@@ -14,7 +14,24 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(**validated_data)
         return user
 
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "password", "email"]
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "username": {"required": False},
+        }
 
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get("username", instance.username)
+        instance.email = validated_data.get("email", instance.email)
+        password = validated_data.get("password", None)
+        if password:
+            instance.set_password(password)
+        instance.save()
+        return instance
+    
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category

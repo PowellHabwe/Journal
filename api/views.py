@@ -49,6 +49,14 @@ class JournalPostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     
 
 
+class UserProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+    
+
 class JournalPostSummaryView(generics.ListAPIView):
     serializer_class = JournalPostSerializer
     permission_classes = [IsAuthenticated]
