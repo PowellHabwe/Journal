@@ -95,7 +95,7 @@ POST: Create a new category. \
 Permissions: Requires authentication. \
 
 
-# USER MANAGEMENT ENGPOINTS
+# USER MANAGEMENT ENDPOINTS
 
 # path("api/user/register/", CreateUserView.as_view(), name="register") \
 Method: POST \
