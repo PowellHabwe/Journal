@@ -33,7 +33,7 @@ sudo mysql -u root -p
 
 # In the shell,run the following commands 
 
-CREATE DATABASE journal_db; #Input The Name of your db
+CREATE DATABASE journal_db; #Input The Name of your db \
 CREATE USER 'journal_user'@'localhost' IDENTIFIED BY 'your_password'; #This Is Where You Input Your Name and Password
 GRANT ALL PRIVILEGES ON journal_db.* TO 'journal_user'@'localhost';
 FLUSH PRIVILEGES;
@@ -122,7 +122,6 @@ Permissions: Open to all (no authentication required).
 path("api-auth/", include("rest_framework.urls"))
 Description: Default login and logout views for the browsable API.
 Permissions: Open to all (no authentication required).
-
 
 
 
