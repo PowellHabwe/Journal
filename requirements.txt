@@ -9,3 +9,4 @@ sqlparse
 slugify
 psycopg2-binary
 python-dotenv
+mysqlclient
