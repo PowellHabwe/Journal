@@ -7,5 +7,6 @@ urlpatterns = [
     path('journalpost/<int:pk>/', views.JournalPostRetrieveUpdateDestroy.as_view(), name='retrieve-update-destroy-journal'),
 
     path('journals/summary/', views.JournalPostSummaryView.as_view(), name='summary-journal'),
+    path("categories/", views.CategoryListCreate.as_view(), name="category-list-create"),
 
 ]

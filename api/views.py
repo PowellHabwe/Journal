@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
-from .serializers import UserSerializer, JournalPostSerializer
-from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import JournalPost
+from .serializers import UserSerializer,CategorySerializer,  JournalPostSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
+from .models import JournalPost, Category
 import datetime
 from django.utils.timezone import now
 from rest_framework.response import Response
@@ -14,6 +14,11 @@ class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
+
+class CategoryListCreate(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class JournalPostListCreate(generics.ListCreateAPIView):
