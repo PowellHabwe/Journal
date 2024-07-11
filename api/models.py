@@ -36,7 +36,7 @@ class JournalPost(models.Model):
         while queryset:
             slug = f"{original_slug}-{count}"
             count += 1
-            queryset = Journal.objects.all().filter(slug__iexact=slug).count()
+            queryset = JournalPost.objects.all().filter(slug__iexact=slug).count()
 
         self.slug = slug
 

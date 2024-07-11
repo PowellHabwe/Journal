@@ -72,7 +72,7 @@ class JournalPostSummaryView(generics.ListAPIView):
         elif period == 'monthly':
             start_date = now().date().replace(day=1)
         else:
-            start_date = now().date()  # Default to daily if period is invalid
+            start_date = now().date() 
 
         return JournalPost.objects.filter(author=user, date__gte=start_date).order_by('-date')
 
